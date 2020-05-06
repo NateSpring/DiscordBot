@@ -7,4 +7,3 @@ html = browser.page_source
 print(html[:100])
 browser.quit()
 
-#test push to raspy pi
