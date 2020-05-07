@@ -6,7 +6,7 @@ from keras.layers import LSTM
 from keras.callbacks import ModelCheckpoint
 from keras.utils import np_utils
 
-filename = "home/pi/snakescripts/GitPi/ram-quote/rick.txt"
+filename = "/home/pi/snakescripts/ram-quote/rick.txt"
 raw_text = open(filename, 'r', encoding='utf-8').read()
 raw_text = raw_text.lower()
 
