@@ -1,8 +1,9 @@
 import re 
 import tweepy 
 from tweepy import OAuthHandler 
-from textblob import TextBlob 
-  
+from textblob import TextBlob
+from simplesms import sendtxt
+
 class TwitterClient(object): 
     ''' 
     Generic Twitter Class for sentiment analysis. 
@@ -90,7 +91,7 @@ def main():
     # creating object of TwitterClient Class 
     api = TwitterClient() 
     # calling function to get tweets 
-    tweets = api.get_tweets(query = 'Donald Trump', count = 200) 
+    tweets = api.get_tweets(query = 'covid', count = 200) 
   
     # picking positive tweets from tweets 
     ptweets = [tweet for tweet in tweets if tweet['sentiment'] == 'positive'] 
@@ -102,6 +103,7 @@ def main():
     print("Negative tweets percentage: {} %".format(100*len(ntweets)/len(tweets))) 
     # percentage of neutral tweets 
     print("Neutral tweets percentage: {} % ".format(100*(len(tweets) - len(ntweets) - len(ptweets))/len(tweets)))
+    sendtxt("Positive tweets percentage: {} %".format(100*len(ptweets)/len(tweets))) 
 
   
     # printing first 5 positive tweets 
