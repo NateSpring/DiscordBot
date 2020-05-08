@@ -92,13 +92,9 @@ def main():
     api = TwitterClient() 
     queryArray = ["corona", "virus", "covid 19"]
     # calling function to get tweets 
-<<<<<<< HEAD
     tweets = api.get_tweets(query = queryArray, count = 200) 
-=======
-    tweets = api.get_tweets(query = 'covid', count = 200) 
->>>>>>> e27378cabfada426d9329495e68a0292246fef40
-  
-    # picking positive tweets from tweets 
+
+    # pcking positive tweets from tweets 
     ptweets = [tweet for tweet in tweets if tweet['sentiment'] == 'positive'] 
     # percentage of positive tweets 
     print("Positive tweets percentage: {} %".format(100*len(ptweets)/len(tweets))) 
