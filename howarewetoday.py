@@ -92,7 +92,7 @@ def main():
     api = TwitterClient() 
     queryArray = ["united states"]
     # calling function to get tweets 
-    tweets = api.get_tweets(query = queryArray, count = 200) 
+    tweets = api.get_tweets(query = queryArray, count = 1500) 
 
     # pcking positive tweets from tweets 
     ptweets = [tweet for tweet in tweets if tweet['sentiment'] == 'positive'] 
