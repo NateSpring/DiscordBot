@@ -90,7 +90,7 @@ class TwitterClient(object):
 def main(): 
     # creating object of TwitterClient Class 
     api = TwitterClient() 
-    queryArray = ["corona"]
+    queryArray = ["united states"]
     # calling function to get tweets 
     tweets = api.get_tweets(query = queryArray, count = 200) 
 
