@@ -97,7 +97,7 @@ def main():
     # pcking positive tweets from tweets 
     ptweets = [tweet for tweet in tweets if tweet['sentiment'] == 'positive'] 
     # percentage of positive tweets 
-    print("Sentiment Analysis about {}".queryArray.text)
+    print(queryArray[0].text)
     print("Positive tweets percentage: {} %".format(100*len(ptweets)/len(tweets))) 
     # picking negative tweets from tweets 
     ntweets = [tweet for tweet in tweets if tweet['sentiment'] == 'negative'] 
