@@ -4,7 +4,7 @@ from tweepy import OAuthHandler
 from textblob import TextBlob
 from simplesms import sendtxt
 
-print("Twitter Topic to Search: ")
+#print("Twitter Topic to Search: ")
 
 class TwitterClient(object): 
     ''' 
@@ -89,10 +89,10 @@ class TwitterClient(object):
             # print error (if any) 
             print("Error : " + str(e)) 
   
-def main(): 
+def main(tweet_query): 
     # creating object of TwitterClient Class 
     api = TwitterClient() 
-    queryArray = input()
+    queryArray = tweet_query
     # calling function to get tweets 
     tweets = api.get_tweets(query = queryArray, count = 1500) 
 
@@ -100,7 +100,7 @@ def main():
     ptweets = [tweet for tweet in tweets if tweet['sentiment'] == 'positive'] 
     # percentage of positive tweets 
     print("Sentiment Analysis on: " + str(queryArray))
-    print("Positive tweets percentage: {} %".format(100*len(ptweets)/len(tweets))) 
+    sentanal = "Positive tweets percentage: {} %".format(100*len(ptweets)/len(tweets))
     # picking negative tweets from tweets 
     ntweets = [tweet for tweet in tweets if tweet['sentiment'] == 'negative'] 
     # percentage of negative tweets 
@@ -108,7 +108,7 @@ def main():
     # percentage of neutral tweets 
     print("Neutral tweets percentage: {} % ".format(100*(len(tweets) - len(ntweets) - len(ptweets))/len(tweets)))
     #sendtxt("Positive tweets percentage: {} %".format(100*len(ptweets)/len(tweets))) 
-
+    return sentanal
   
     # printing first 5 positive tweets 
    # print("\n\nPositive tweets:") 

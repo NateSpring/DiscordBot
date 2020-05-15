@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 from simplesms import sendtxt
+from howarewetoday import main
 
 
 TOKEN = 'NzA2ODUyNDQ4ODMyMzIzNjc0.XrATEA.vsrZkWGMt6woR-w4imFpuj72qLQ'
@@ -36,5 +37,11 @@ async def text(ctx, *text):
     """I'll relay your message to my master"""
     await ctx.send("Your message shall be relayed. Thank You.")
     sendtxt(" ".join(text[:]))
+
+@bot.command()
+async def feels(ctx, *text):
+    """I'll perform sentiment analysis on the given criteria based on Tweets"""
+    
+    await ctx.send(main(" ".join(text[:])))
 
 bot.run(TOKEN)
