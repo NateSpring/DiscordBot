@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 from simplesms import sendtxt
 
+
 TOKEN = 'NzA2ODUyNDQ4ODMyMzIzNjc0.XrATEA.vsrZkWGMt6woR-w4imFpuj72qLQ'
 
 description = '''My purpose is to pass the butter'''
@@ -12,12 +13,12 @@ async def on_ready():
     print('Butter Robot Online')
     print(bot.user.id)
     print('------')
-    
+
 @bot.event    
 async def on_message(message):
     message_info = message.content
-    if message_info == "test":
-        return await message.channel.send("Test recieved.")
+    if message_info == "Test":
+        return await message.channel.send("I hear you dumbass.")
 
 @bot.command()
 async def hello(ctx):
