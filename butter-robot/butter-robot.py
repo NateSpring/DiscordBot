@@ -41,7 +41,6 @@ async def text(ctx, *text):
 @bot.command()
 async def feels(ctx, *text):
     """I'll perform sentiment analysis on the given criteria based on Tweets"""
-    
     await ctx.send(main(" ".join(text[:])))
 
 bot.run(TOKEN)
