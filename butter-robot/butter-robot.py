@@ -8,6 +8,11 @@ description = '''My purpose is to pass the butter'''
 bot = commands.Bot(command_prefix='!', description=description)
 
 @bot.event
+async def on_message(message):
+    message_info = call_for(message.content)
+    if message_info == "test":
+        await ctx.send("Test recieved.")
+        
 async def on_ready():
     print('Butter Robot Online')
     print(bot.user.id)
