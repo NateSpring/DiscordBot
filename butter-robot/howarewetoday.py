@@ -100,7 +100,7 @@ def main(tweet_query):
     ptweets = [tweet for tweet in tweets if tweet['sentiment'] == 'positive'] 
     # percentage of positive tweets 
     print("Sentiment Analysis on: " + str(queryArray))
-    sentanal = "Positive tweets percentage: {} %".format(100*len(ptweets)/len(tweets))
+    print("Positive tweets percentage: {} %".format(100*len(ptweets)/len(tweets)))
     # picking negative tweets from tweets 
     ntweets = [tweet for tweet in tweets if tweet['sentiment'] == 'negative'] 
     # percentage of negative tweets 
@@ -108,7 +108,7 @@ def main(tweet_query):
     # percentage of neutral tweets 
     print("Neutral tweets percentage: {} % ".format(100*(len(tweets) - len(ntweets) - len(ptweets))/len(tweets)))
     #sendtxt("Positive tweets percentage: {} %".format(100*len(ptweets)/len(tweets))) 
-    return sentanal
+    
   
     # printing first 5 positive tweets 
    # print("\n\nPositive tweets:") 

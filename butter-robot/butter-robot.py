@@ -1,8 +1,10 @@
 import discord
 from discord.ext import commands
 from simplesms import sendtxt
-from howarewetoday import main
-
+import re 
+import tweepy 
+from tweepy import OAuthHandler 
+from textblob import TextBlob
 
 TOKEN = 'NzA2ODUyNDQ4ODMyMzIzNjc0.XrATEA.vsrZkWGMt6woR-w4imFpuj72qLQ'
 
@@ -14,12 +16,6 @@ async def on_ready():
     print('Butter Robot Online')
     print(bot.user.id)
     print('------')
-
-@bot.event    
-async def on_message(message):
-    message_info = message.content
-    if message_info == "Test":
-        return await message.channel.send("I hear you dumbass.")
 
 @bot.command()
 async def hello(ctx):
@@ -38,10 +34,125 @@ async def text(ctx, *text):
     await ctx.send("Your message shall be relayed. Thank You.")
     sendtxt(" ".join(text[:]))
 
-@bot.command()
-async def feels(ctx, *text):
-    """I'll perform sentiment analysis on the given criteria based on Tweets"""
-    print(" ".join(text[:]))
-    #await ctx.send(main(" ".join(text[:])))
+
+
+
+class TwitterClient(object): 
+    ''' 
+    Generic Twitter Class for sentiment analysis. 
+    '''
+    def __init__(self): 
+        ''' 
+        Class constructor or initialization method. 
+        '''
+        # keys and tokens from the Twitter Dev Console 
+        consumer_key = "WtuOsWAnbKmwFLulF0pUv5qRL"
+        consumer_secret = "erTnMJ5kI7MJscexxfHzvteDk2qUl1IAeCdUBky72BR9Kj2jlA"
+        access_token = "1137473005250965505-EwS8kZeWHn3qTjQ8hoQzoUyuue3hgo"
+        access_token_secret = "PSyUlZUfa1XGe1P5ax6DgbRgw3Lwd06lwzBsqnCSd254w"
+  
+        # attempt authentication 
+        try: 
+            # create OAuthHandler object 
+            self.auth = OAuthHandler(consumer_key, consumer_secret) 
+            # set access token and secret 
+            self.auth.set_access_token(access_token, access_token_secret) 
+            # create tweepy API object to fetch tweets 
+            self.api = tweepy.API(self.auth) 
+        except: 
+            print("Error: Authentication Failed") 
+  
+    def clean_tweet(self, tweet): 
+        ''' 
+        Utility function to clean tweet text by removing links, special characters 
+        using simple regex statements. 
+        '''
+        return ' '.join(re.sub("(@[A-Za-z0-9]+)|([^0-9A-Za-z \t])|(\w+:\/\/\S+)", " ", tweet).split()) 
+  
+    def get_tweet_sentiment(self, tweet): 
+        ''' 
+        Utility function to classify sentiment of passed tweet 
+        using textblob's sentiment method 
+        '''
+        # create TextBlob object of passed tweet text 
+        analysis = TextBlob(self.clean_tweet(tweet)) 
+        # set sentiment 
+        if analysis.sentiment.polarity > 0: 
+            return 'positive'
+        elif analysis.sentiment.polarity == 0: 
+            return 'neutral'
+        else: 
+            return 'negative'
+  
+    def get_tweets(self, query, count = 10): 
+        ''' 
+        Main function to fetch tweets and parse them. 
+        '''
+        # empty list to store parsed tweets 
+        tweets = [] 
+  
+        try: 
+            # call twitter api to fetch tweets 
+            fetched_tweets = self.api.search(q = query, count = count) 
+  
+            # parsing tweets one by one 
+            for tweet in fetched_tweets: 
+                # empty dictionary to store required params of a tweet 
+                parsed_tweet = {} 
+  
+                # saving text of tweet 
+                parsed_tweet['text'] = tweet.text 
+                # saving sentiment of tweet 
+                parsed_tweet['sentiment'] = self.get_tweet_sentiment(tweet.text) 
+  
+                # appending parsed tweet to tweets list 
+                if tweet.retweet_count > 0: 
+                    # if tweet has retweets, ensure that it is appended only once 
+                    if parsed_tweet not in tweets: 
+                        tweets.append(parsed_tweet) 
+                else: 
+                    tweets.append(parsed_tweet) 
+  
+            # return parsed tweets 
+            return tweets 
+  
+        except tweepy.TweepError as e: 
+            # print error (if any) 
+            print("Error : " + str(e)) 
+@bot.command()    
+async def feels(ctx, arg): 
+        # creating object of TwitterClient Class 
+        api = TwitterClient() 
+        queryArray = arg
+        # calling function to get tweets 
+        tweets = api.get_tweets(query = queryArray, count = 1500) 
+
+        # pcking positive tweets from tweets 
+        ptweets = [tweet for tweet in tweets if tweet['sentiment'] == 'positive'] 
+        # percentage of positive tweets 
+        print("Sentiment Analysis on: " + str(queryArray))
+        print("Positive tweets percentage: {} %".format(100*len(ptweets)/len(tweets)))
+        # picking negative tweets from tweets 
+        ntweets = [tweet for tweet in tweets if tweet['sentiment'] == 'negative'] 
+        # percentage of negative tweets 
+        print("Negative tweets percentage: {} %".format(100*len(ntweets)/len(tweets))) 
+        # percentage of neutral tweets 
+        print("Neutral tweets percentage: {} % ".format(100*(len(tweets) - len(ntweets) - len(ptweets))/len(tweets)))
+        #sendtxt("Positive tweets percentage: {} %".format(100*len(ptweets)/len(tweets))) 
+          # printing first 5 positive tweets 
+        # print("\n\nPositive tweets:") 
+        for tweet in ptweets[:5]: 
+          pos = (tweet['text']) 
+    
+        # printing first 5 negative tweets 
+        #print("\n\nNegative tweets:") 
+        for tweet in ntweets[:5]: 
+          negs = (tweet['text']) 
+        
+        await ctx.send("SENTIMENT ANALYSIS ON: {} \n Positive Tweets Percentage: {} % \n Negative Tweets Percentage: {} % Neutral Tweets Percentage: {} % \n\n Random Positive Tweet: \n{} \n\n Random Negative Tweet: \n{}".format(str(queryArray), 100*len(ptweets)/len(tweets), 100*len(ntweets)/len(tweets), 100*(len(tweets) - len(ntweets) - len(ptweets))/len(tweets), pos, negs))
+        
+    
+      
+
 
 bot.run(TOKEN)
