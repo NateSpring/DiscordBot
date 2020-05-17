@@ -7,8 +7,17 @@ import tweepy
 from tweepy import OAuthHandler 
 from textblob import TextBlob
 import asyncio
+import praw
+import random
+
 
 TOKEN = 'NzA2ODUyNDQ4ODMyMzIzNjc0.XrATEA.vsrZkWGMt6woR-w4imFpuj72qLQ'
+reddit = praw.Reddit(client_id='ReoMUk43GoPB9g',
+                    client_secret='PCybyCu_4HffhqLyfOAUe1QKSbU',
+                    user_agent='ninja_nate92')
+
+
+
 
 description = '''My purpose is to pass the butter'''
 bot = commands.Bot(command_prefix='!', description=description)
@@ -40,6 +49,17 @@ async def purpose(ctx):
         voice = await channel.connect()
     source = FFmpegPCMAudio('rick-passbutter.mp3')
     player = voice.play(source)
+
+@bot.command()
+async def meme(ctx):
+    """Display a top 10 reddit meme"""
+    memes_submissions = reddit.subreddit('memes').hot()
+    post_to_pick = random.randint(1, 100)
+    for i in range(0, post_to_pick):
+        submission = next(x for x in memes_submissions if not x.stickied)
+
+    await bot.say(submission.url)
+
 
 
 
