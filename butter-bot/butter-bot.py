@@ -30,7 +30,7 @@ async def on_ready():
 
 @bot.command(pass_context=True)
 async def purpose(ctx):
-    """What is my purpose?"""
+    """--What is my purpose?"""
     channel = ctx.message.author.voice.channel
     if not channel:
         await ctx.send("You are not connected to a voice channel")
@@ -45,7 +45,7 @@ async def purpose(ctx):
 
 @bot.command()
 async def meme(ctx):
-    """Display a top 10 reddit meme"""
+    """--Display a top 10 reddit meme"""
     memes_submissions = reddit.subreddit('memes').hot()
     post_to_pick = random.randint(1, 100)
     for i in range(0, post_to_pick):
@@ -141,7 +141,7 @@ class TwitterClient(object):
             print("Error : " + str(e)) 
 @bot.command()    
 async def feels(ctx, arg):
-        """I will perform an analysis on tweets about your topic""" 
+        """--An analysis on your topic""" 
         # creating object of TwitterClient Class 
         api = TwitterClient() 
         queryArray = arg
