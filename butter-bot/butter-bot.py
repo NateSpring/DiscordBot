@@ -58,7 +58,7 @@ async def meme(ctx):
     for i in range(0, post_to_pick):
         submission = next(x for x in memes_submissions if not x.stickied)
 
-    await bot.say(submission.url)
+    await ctx.message.channel(submission.url)
 
 
 
