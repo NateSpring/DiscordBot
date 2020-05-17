@@ -1,6 +1,5 @@
 import discord
 from discord.ext import commands
-from simplesms import sendtxt
 import re 
 import tweepy 
 from tweepy import OAuthHandler 
