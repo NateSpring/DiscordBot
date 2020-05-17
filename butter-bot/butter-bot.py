@@ -28,13 +28,6 @@ async def on_ready():
     print(bot.user.id)
     print('------')
 
-@bot.command()
-async def hello(ctx):
-    """I will welcome your presence"""
-    user = ctx.message.author
-    await ctx.send("Hello " + user.mention + "!")
-
-
 @bot.command(pass_context=True)
 async def purpose(ctx):
     """What is my purpose?"""
@@ -147,7 +140,8 @@ class TwitterClient(object):
             # print error (if any) 
             print("Error : " + str(e)) 
 @bot.command()    
-async def feels(ctx, arg): 
+async def feels(ctx, arg):
+    """I will perform an analysis on tweets about your topic""" 
         # creating object of TwitterClient Class 
         api = TwitterClient() 
         queryArray = arg
