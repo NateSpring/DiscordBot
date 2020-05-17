@@ -1,9 +1,12 @@
 import discord
 from discord.ext import commands
+from discord import FFmpegPCMAudio
+from discord.utils import get
 import re 
 import tweepy 
 from tweepy import OAuthHandler 
 from textblob import TextBlob
+import asyncio
 
 TOKEN = 'NzA2ODUyNDQ4ODMyMzIzNjc0.XrATEA.vsrZkWGMt6woR-w4imFpuj72qLQ'
 
@@ -22,16 +25,21 @@ async def hello(ctx):
     user = ctx.message.author
     await ctx.send("Hello " + user.mention + "!")
 
-@bot.command()
-async def purpose(ctx):
-    """I'll explain my purpose"""
-    await ctx.send("To pass the butter.")
 
-@bot.command()
-async def text(ctx, *text):
-    """I'll relay your message to my master"""
-    await ctx.send("Your message shall be relayed. Thank You.")
-    sendtxt(" ".join(text[:]))
+@bot.command(pass_context=True)
+async def purpose(ctx):
+    """What is my purpose?"""
+    channel = ctx.message.author.voice.channel
+    if not channel:
+        await ctx.send("You are not connected to a voice channel")
+        return
+    voice = get(bot.voice_clients, guild=ctx.guild)
+    if voice and voice.is_connected():
+        await voice.move_to(channel)
+    else:
+        voice = await channel.connect()
+    source = FFmpegPCMAudio('rick-passbutter.mp3')
+    player = voice.play(source)
 
 
 
