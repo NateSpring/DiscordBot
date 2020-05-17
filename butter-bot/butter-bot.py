@@ -141,7 +141,7 @@ class TwitterClient(object):
             print("Error : " + str(e)) 
 @bot.command()    
 async def feels(ctx, arg):
-    """I will perform an analysis on tweets about your topic""" 
+        """I will perform an analysis on tweets about your topic""" 
         # creating object of TwitterClient Class 
         api = TwitterClient() 
         queryArray = arg
