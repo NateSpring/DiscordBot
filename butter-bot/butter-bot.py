@@ -33,8 +33,8 @@ async def on_ready():
     print(bot.user.id)
     print('------')
 
-@bot.event
-async def on_message(message):
+@bot.command()
+async def purpose(message):
     """--What is my purpose?"""
     channel = message.author.voice.channel
     message_in = message.content
@@ -61,7 +61,7 @@ async def meme(ctx):
 
     await ctx.send(submission.url)
 
-@bot.event
+@bot.command()
 async def news(ctx):
     """--What's happening in the news?"""
     URL = 'https://www.foxnews.com'
