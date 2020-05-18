@@ -9,6 +9,11 @@ from textblob import TextBlob
 import asyncio
 import praw
 import random
+import urllib.request
+from bs4 import BeautifulSoup
+import csv
+import re
+import markovify
 
 
 TOKEN = 'NzA2ODUyNDQ4ODMyMzIzNjc0.XrATEA.vsrZkWGMt6woR-w4imFpuj72qLQ'
