@@ -32,8 +32,9 @@ async def on_ready():
 async def on_message(message):
     """--What is my purpose?"""
     channel = message.author.voice.channel
+    message_in = message.context
     word = "purpose"
-    if word in message:
+    if word in message_in:
         if not channel:
             await message.send("You are not connected to a voice channel")
             return
