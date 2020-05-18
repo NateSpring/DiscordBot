@@ -56,6 +56,26 @@ async def meme(ctx):
 
     await ctx.send(submission.url)
 
+@bot.event
+async def news(ctx):
+    """--What's happening in the news?"""
+    URL = 'https://www.foxnews.com'
+    page = urllib.request.urlopen(URL)
+    soup = BeautifulSoup(page, 'html.parser')
+
+    text_array = []
+
+    headlines = soup.findAll('h2', attrs = {'class':'title'})
+
+    for headline in headlines:
+        quote = headline.a.text
+        text_array.append(quote)
+    text_model = markovify.Text(text_array)
+
+    for i in range(1):
+        await ctx.send(text_model.make_short_sentence(280))
+
+
 
 
 
