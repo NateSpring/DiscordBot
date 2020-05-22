@@ -2,13 +2,18 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>NatesNewsAggregator</title>
+    <title>Git Commits Thusfar</title>
   </head>
   <body>
-  <h1 style="text-align:center;">Nates News</h1>
+  <h1 style="text-align:center;">Git Commits Thusfar</h1>
 <div class="center halfwidth">
 
-<h1>Your news here.</h1>
+
+{% for table in tables %}
+	{{titles[loop.index]}}
+	{{table|safe}}
+{% endfor %}
+	
 </div>
   </body>
 </html>
