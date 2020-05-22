@@ -34,16 +34,16 @@ async def on_ready():
     print('------')
 
 @bot.command()
-async def purpose(message):
+async def purpose(ctx):
     """--What is my purpose?"""
-    channel = message.author.voice.channel
-    message_in = message.content
+    channel = ctx.author.voice.channel
+    ctx_in = ctx.content
     word = "purpose"
-    if word in message_in:
+    if word in ctx_in:
         if not channel:
-            await message.send("You are not connected to a voice channel")
+            await ctx.send("You are not connected to a voice channel")
             return
-        voice = get(bot.voice_clients, guild=message.guild)
+        voice = get(bot.voice_clients, guild=ctx.guild)
         if voice and voice.is_connected():
             await voice.move_to(channel)
         else:
