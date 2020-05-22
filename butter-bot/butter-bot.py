@@ -33,7 +33,7 @@ async def on_ready():
     print(bot.user.id)
     print('------')
 
-@bot.command()
+@bot.event()
 async def purpose(message):
     """--What is my purpose?"""
     channel = message.author.voice.channel
