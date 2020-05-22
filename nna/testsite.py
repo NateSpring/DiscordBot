@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 data = pd.read_csv('gitlog430.csv')
-data.columns = ["Author", "Day", "Date", "Message", " ", " "]
+data.columns = ["Author", "Day", "Date", "Mess.", " ", " "]
 df = data[['Day', 'Date', 'Message']]
 
 
