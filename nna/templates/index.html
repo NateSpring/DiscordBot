@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script>
-    <title>NatesNewsAggregator</title>
+    <title>Spring House Finder</title>
   </head>
   <body>
   
   
   
-<h1 class="header">Nates News</h1>
+<h1 class="header">Lets Find a House 🏠😊</h1>
 
 
 
@@ -17,10 +17,10 @@
 {% for item in news %}
 
 
-<div class="card" style="width: 18rem;">
+<div class="card" style="width: 75%;">
 
   <div class="card-body">
-    <h5 class="card-title">{{ item }}</h5>
+    <h5 class="card-title">{{ item.headline }}</h5>
     <p class="card-text">Quick sample text to create the card title and make up the body of the card's content.</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
