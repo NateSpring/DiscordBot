@@ -13,17 +13,18 @@
 
 
 
-<div class="center halfwidth">
+<div class="container">
 {% for item in news %}
 
-
-<div class="card row" style="width: 75%;">
+<div class="row">
+<div class="card col-sm" style="width: 75%;">
 
   <div class="card-body">
     <h5 class="card-title">{{ item }}</h5>
     <p class="card-text">Quick sample text to create the card title and make up the body of the card's content.</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
+</div>
 </div>
 
 {% endfor %}
