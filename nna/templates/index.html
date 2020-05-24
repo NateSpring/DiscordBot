@@ -7,7 +7,9 @@
   <body>
   <h1 style="text-align:center;">Nates News</h1>
 <div class="center halfwidth">
-<h1>{{ news[0] }}</h1>
+{% for item in {{news}} %}
+  <h1>item</h1>
+{% endfor %}
 </div>
   </body>
 </html>
