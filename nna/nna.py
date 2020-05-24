@@ -7,7 +7,7 @@ url = 'https://www.cnet.com/news/'
 r = requests.get(url)
 soup = BeautifulSoup(r.text, "html.parser")
 headlines = soup.find_all('div', class_='col-2 assetText')
-news = []
+news = {}
 for headline in headlines:
     news[header].append(headline.text)
 
