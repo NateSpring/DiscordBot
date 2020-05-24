@@ -8,16 +8,13 @@ r = requests.get(url)
 soup = BeautifulSoup(r.text, "html.parser")
 headlines = soup.find_all('div', class_='col-2 assetText')
 
-news = {}
 
-for headline in headlines:
-    news.update({'headline' : headline.text})
 
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html', news=news)
+    return render_template('index.html', headlines=news)
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
