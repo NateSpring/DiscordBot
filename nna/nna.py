@@ -9,7 +9,7 @@ soup = BeautifulSoup(r.text, "html.parser")
 headlines = soup.find_all('div', class_='col-2 assetText')
 news = []
 for headline in headlines:
-    news.append(headline.text)
+    news[header].append(headline.text)
 
 app = Flask(__name__)
 

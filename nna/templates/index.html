@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script>
     <title>NatesNewsAggregator</title>
   </head>
   <body>
@@ -15,8 +16,14 @@
 <div class="center halfwidth">
 {% for item in news %}
 
-<div class="container">
-  <h1 class="news-article">{{item}}</h1>
+
+<div class="card" style="width: 18rem;">
+
+  <div class="card-body">
+    <h5 class="card-title">{{ item.header }}</h5>
+    <p class="card-text">Quick sample text to create the card title and make up the body of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
 </div>
 
 {% endfor %}
