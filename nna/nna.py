@@ -3,10 +3,10 @@ from bs4 import BeautifulSoup
 import requests
 
 
-url = 'https://www.cnet.com/news/'
+url = 'https://www.dev.to'
 r = requests.get(url)
 soup = BeautifulSoup(r.text, "html.parser")
-headlines = soup.find_all('div', class_='col-2 assetText')
+headlines = soup.find_all('div', class_='crayons-story__body')
 
 
 
