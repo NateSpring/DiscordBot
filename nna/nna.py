@@ -11,7 +11,7 @@ headlines = soup.find_all('div', class_='col-2 assetText')
 news = {}
 
 for headline in headlines:
-    news.append({'headline' : headline.text})
+    news.update({'headline' : headline.text})
 
 app = Flask(__name__)
 
