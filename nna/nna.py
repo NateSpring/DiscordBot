@@ -12,7 +12,7 @@ title = soup.find_all('h2', class_='crayons-story__title')
 headlines = soup.find_all('div', class_='crayons-story__indention')
 
 for headline in headlines:
-    link = headlines.findChild('h2', class_='crayons-story__title').a['href']
+    link = headlines.find('h2', class_='crayons-story__title').a['href']
 
 app = Flask(__name__)
 
