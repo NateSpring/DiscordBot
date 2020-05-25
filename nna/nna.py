@@ -16,7 +16,7 @@ for headline in headlines:
 
 
 for item, links in zip(title, link): 
-    print(item.text, links.text)
+    print(item, links)
 
 
 app = Flask(__name__)
