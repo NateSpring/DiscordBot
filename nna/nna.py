@@ -12,9 +12,8 @@ soup = BeautifulSoup(r.text, "html.parser")
 headlines = soup.find_all('div', class_='crayons-story__indention')
 
 for headline in headlines:
-    title = headline.find('a')
-    link = headline.find('a')['href']
-    print(link)
+    titles = headline.find('a')
+    links = headline.find('a')['href']
 
 #for item, links in zip(title, link): 
 #    print(item, links)
@@ -26,7 +25,7 @@ app.jinja_env.globals.update(zip=zip)
 
 @app.route('/')
 def index():
-    return render_template('index.html', news=title, linklist=link)
+    return render_template('index.html', titles=titles, links=links)
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')

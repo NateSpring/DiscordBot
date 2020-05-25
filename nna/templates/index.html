@@ -15,12 +15,12 @@
 
 
 <div class="container">
-{% for item, link in zip(news, linklist) %}
+{% for title, link in zip(titles, links) %}
 
 <div class="card col-sm" style="width: 100%; margin: auto;">
 
   <div class="card-body">
-    <h1 class="card-title">{{ item.text }}</h1>
+    <h1 class="card-title">{{ title.text }}</h1>
     <p class="card-text"></p>
     <a class="btn btn-primary" href='https://www.dev.to'>{{ link }}Click to View</a>
   </div>
