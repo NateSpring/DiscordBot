@@ -16,6 +16,8 @@ for headline in headlines:
 
 app = Flask(__name__)
 
+app.jinja_env.globals.update(zip=zip)
+
 @app.route('/')
 def index():
     return render_template('index.html', news=title, link=link)
