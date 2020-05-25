@@ -8,7 +8,7 @@ r = requests.get(url)
 soup = BeautifulSoup(r.text, "html.parser")
 
 headlines = soup.find('div', class_='crayons-story__title')
-link = headlines.find('a')['href']
+link = headlines.find('a')
 for allLinks in link:
     print(link)
 
