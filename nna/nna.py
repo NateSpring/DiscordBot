@@ -13,7 +13,7 @@ headlines = soup.find_all('div', class_='crayons-story__indention')
 
 for headline in headlines:
     links = headline.find('a')['href']
-    print(titles)
+    print(links)
 
 #for item, links in zip(title, link): 
 #    print(item, links)
