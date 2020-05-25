@@ -9,7 +9,9 @@ soup = BeautifulSoup(r.text, "html.parser")
 
 title = soup.find_all('h2', class_='crayons-story__title')
 
-link = soup.find_all('div', class_='crayons-story__title').a['href']
+headlines = soup.find_all('div', class_='crayons-story__title')
+for headline in headlines:
+    link = headline.find('h2', class_='crayons-story__title').a['href']
 
 app = Flask(__name__)
 
