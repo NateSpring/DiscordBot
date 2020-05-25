@@ -12,7 +12,7 @@ soup = BeautifulSoup(r.text, "html.parser")
 headlines = soup.find_all('div', class_='crayons-story__indention')
 
 for headline in headlines:
-    titles = headline.find('a')
+    titles = headline.find('a').text
     links = headline.find('a')['href']
     print(titles)
 
