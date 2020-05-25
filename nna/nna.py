@@ -9,10 +9,10 @@ soup = BeautifulSoup(r.text, "html.parser")
 
 titles = soup.find_all('h2', class_='crayons-story__title')
 
-headlines = soup.find_all('div', class_='crayons-story__indention')
+#headlines = soup.find_all('div', class_='crayons-story__indention')
 
-for headline in headlines:
-    links = headline.find('a')['href']
+for title in titles:
+    links = title.find('a')['href']
     print(links)
 
 #for item, links in zip(title, link): 
