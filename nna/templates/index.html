@@ -15,7 +15,7 @@
 
 
 <div class="container">
-{% for link in links %}
+{% for title, link in zip(titles, links) %}
 
 <div class="card col-sm" style="width: 100%; margin: auto;">
 
