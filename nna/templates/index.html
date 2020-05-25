@@ -15,13 +15,11 @@
 
 
 <div class="container">
-{i = 0}
-{% for title in titles %}
-{ i++ }
+{% for i in range(0, len)%}
 <div class="card col-sm" style="width: 100%; margin: auto;">
 
   <div class="card-body">
-    <h1 class="card-title">{{ title.text }}</h1>
+    <h1 class="card-title">{{ titles[i].text }}</h1>
     <p class="card-text"></p>
     <a class="btn btn-primary" href='https://www.dev.to'>{{ links[i] }}Go To Article</a>
   </div>

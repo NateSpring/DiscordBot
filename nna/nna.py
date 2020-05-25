@@ -24,7 +24,7 @@ app.jinja_env.globals.update(zip=zip)
 
 @app.route('/')
 def index():
-    return render_template('index.html', titles=titles, links=links)
+    return render_template('index.html', len = len(titles), titles=titles, links=links)
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
