@@ -15,14 +15,14 @@
 
 
 <div class="container">
-{% for item in news %}
+{% for item, li in zip(news, link) %}
 
 <div class="card col-sm" style="width: 100%; margin: auto;">
 
   <div class="card-body">
     <h1 class="card-title">{{ item.text }}</h1>
     <p class="card-text"></p>
-    <a class="btn btn-primary" href='https://www.dev.to{{ link[3] }}'>Click to View</a>
+    <a class="btn btn-primary" href='https://www.dev.to{{ link }}'>Click to View</a>
   </div>
 </div>
 
