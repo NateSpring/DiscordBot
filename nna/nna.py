@@ -11,7 +11,7 @@ title = soup.find_all('h2', class_='crayons-story__title')
 
 headlines = soup.find_all('div', class_='crayons-story__indention')
 links = soup.find_all('h2', class_='crayons-story__title')
-link = links.a['href']
+link = links.a
 
 app = Flask(__name__)
 
