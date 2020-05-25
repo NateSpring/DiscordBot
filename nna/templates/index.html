@@ -15,14 +15,14 @@
 
 
 <div class="container">
-{% for title, link in zip(titles, links) %}
+{% for title in titles %}
 
 <div class="card col-sm" style="width: 100%; margin: auto;">
 
   <div class="card-body">
     <h1 class="card-title">{{ title.text }}</h1>
     <p class="card-text"></p>
-    <a class="btn btn-primary" href='https://www.dev.to'>{{ link }}Click to View</a>
+    <a class="btn btn-primary" href='https://www.dev.to'>Click to View</a>
   </div>
 </div>
 
