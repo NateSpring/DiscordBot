@@ -7,7 +7,7 @@ url = 'https://www.dev.to'
 r = requests.get(url)
 soup = BeautifulSoup(r.text, "html.parser")
 
-headlines = soup.findAll('div', class_='crayons-story__indention')
+headlines = soup.find_all('div', class_='crayons-story__indention')
 
 for headline in headlines:
     link = headlines.find('h2', class_='crayons-story__title').text
