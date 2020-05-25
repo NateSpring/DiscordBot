@@ -20,7 +20,7 @@ app.jinja_env.globals.update(zip=zip)
 
 @app.route('/')
 def index():
-    return render_template('index.html', news=title, link=link)
+    return render_template('index.html', news=title, linklist=link)
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
