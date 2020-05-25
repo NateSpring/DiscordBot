@@ -11,8 +11,7 @@ titles = soup.find_all('h2', class_='crayons-story__title')
 
 #headlines = soup.find_all('div', class_='crayons-story__indention')
 
-for title in titles:
-    links = title.find('a')['href']
+links = titles.find('a')['href']
 
 #for item, links in zip(title, link): 
 #    print(item, links)
