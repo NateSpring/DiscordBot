@@ -7,11 +7,11 @@ url = 'https://www.dev.to'
 r = requests.get(url)
 soup = BeautifulSoup(r.text, "html.parser")
 
-titles = soup.find_all('h2', class_='crayons-story__title')
+titles = soup.findAll('h2', class_='crayons-story__title')
 
 #headlines = soup.find_all('div', class_='crayons-story__indention')
 
-links = titles.find('a')['href']
+links = titles.findAll('a')['href']
 
 #for item, links in zip(title, link): 
 #    print(item, links)
