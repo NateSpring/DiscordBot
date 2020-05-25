@@ -8,10 +8,10 @@ r = requests.get(url)
 soup = BeautifulSoup(r.text, "html.parser")
 
 headlines = soup.findAll('div', class_='crayons-story__indention')
+links = headlines.findAll('h2', class_='crayons-story__title').text
 
-for headline in headlines:
-    link = headline
-    print(headline)
+for link in links:
+    print(link)
 
 
 app = Flask(__name__)
