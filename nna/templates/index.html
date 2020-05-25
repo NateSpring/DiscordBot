@@ -17,14 +17,14 @@
 <div class="container">
 {% for item in news %}
 
-<div class="card col-sm" style="width: 50%; margin: auto;">
+<div class="card col-sm" style="width: 100%; margin: auto;">
 
   <div class="card-body">
     <h1 class="card-title">{{ item.text }}</h1>
     <p class="card-text">Quick sample text to create the card title and make up the body of the card's content.</p>
-    {% for li in link % }
-    <a href='' class="btn btn-primary">{{ li.text }}</a>
-    {% endfor %}
+    
+    <a href='' class="btn btn-primary">{% for ink in link %}{{ ink.text }}{% endfor %}</a>
+   
   </div>
 </div>
 
@@ -51,6 +51,7 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
 
 a {
   margin: 15px;
+  height: 50px;
 }
 
 .header {
