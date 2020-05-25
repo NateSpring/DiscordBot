@@ -13,7 +13,6 @@ titles = soup.find_all('h2', class_='crayons-story__title')
 
 for title in titles:
     links = title.find('a')['href']
-    print()
 
 #for item, links in zip(title, link): 
 #    print(item, links)

@@ -15,14 +15,15 @@
 
 
 <div class="container">
-{% for title, link in zip(titles, links) %}
-
+{{i = 0}}
+{% for title in titles %}
+{{ i++ }}
 <div class="card col-sm" style="width: 100%; margin: auto;">
 
   <div class="card-body">
     <h1 class="card-title">{{ title.text }}</h1>
     <p class="card-text"></p>
-    <a class="btn btn-primary" href='https://www.dev.to'>{{ links }}Go To Article</a>
+    <a class="btn btn-primary" href='https://www.dev.to'>{{ links[i] }}Go To Article</a>
   </div>
 </div>
 
