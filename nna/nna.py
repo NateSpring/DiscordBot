@@ -8,9 +8,9 @@ r = requests.get(url)
 soup = BeautifulSoup(r.text, "html.parser")
 
 headlines = soup.findAll('div', class_='crayons-story__indention')
-links = headlines.find('h2', class_='crayons-story__title').text
 
-for link in links:
+for headline in headlines:
+    link = headlines.find('h2', class_='crayons-story__title').text
     print(link)
 
 
