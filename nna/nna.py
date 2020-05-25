@@ -14,6 +14,11 @@ headlines = soup.find_all('div', class_='crayons-story__indention')
 for headline in headlines:
     link = headline.find('h2', class_='crayons-story__title').a['href']
 
+
+for item, links in zip(title, link) 
+    print(item, links '\n')
+
+
 app = Flask(__name__)
 
 app.jinja_env.globals.update(zip=zip)
