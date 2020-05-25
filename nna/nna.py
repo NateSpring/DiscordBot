@@ -7,16 +7,16 @@ url = 'https://www.dev.to'
 r = requests.get(url)
 soup = BeautifulSoup(r.text, "html.parser")
 
-title = soup.find_all('h2', class_='crayons-story__title').text
+title = soup.find_all('h2', class_='crayons-story__title')
 
 headlines = soup.find_all('div', class_='crayons-story__indention')
 
 for headline in headlines:
-    link = headline.find('h2', class_='crayons-story__title').a['href'].text
+    link = headline.find('h2', class_='crayons-story__title').a['href']
 
 
 for item, links in zip(title, link): 
-    print(item, links)
+    print(item.text, links.text)
 
 
 app = Flask(__name__)
