@@ -16,7 +16,7 @@ import re
 import markovify
 
 
-TOKEN = 'NzA2ODUyNDQ4ODMyMzIzNjc0.XrATEA.vsrZkWGMt6woR-w4imFpuj72qLQ'
+TOKEN = 'NzA2ODUyNDQ4ODMyMzIzNjc0.XrARpA.RddyZHlQbjNBEzlUO4i5yAwU4h4'
 reddit = praw.Reddit(client_id='ReoMUk43GoPB9g',
                     client_secret='PCybyCu_4HffhqLyfOAUe1QKSbU',
                     user_agent='ninja_nate92')
