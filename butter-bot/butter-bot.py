@@ -33,20 +33,20 @@ async def on_ready():
     print(bot.user.id)
     print('------')
 
-#@bot.command()
-#async def purpose(message):
-   # """--What is my purpose?"""
-   # channel = message.author.voice.channel
-        #if not channel:
-     #       await message.send("You are not connected to a voice channel")
-      #      return
-     #   voice = get(bot.voice_clients, guild=message.guild)
-     #   if voice and voice.is_connected():
-    #        await voice.move_to(channel)
-    #    else:
-    #        voice = await channel.connect()
-    #    source = FFmpegPCMAudio('rick-passbutter.mp3')
-    #    player = voice.play(source)
+@bot.command()
+async def purpose(message):
+    """--What is my purpose?"""
+    channel = message.author.voice.channel
+        if not channel:
+            await message.send("You are not connected to a voice channel")
+            return
+        voice = get(bot.voice_clients, guild=message.guild)
+        if voice and voice.is_connected():
+            await voice.move_to(channel)
+        else:
+            voice = await channel.connect()
+        source = FFmpegPCMAudio('rick-passbutter.mp3')
+        player = voice.play(source)
 
 @bot.command()
 async def meme(ctx):
