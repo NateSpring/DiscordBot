@@ -185,4 +185,4 @@ async def feels(ctx, arg):
         
     
 
-bot.run(TOKEN)
+bot.run('NzA2ODUyNDQ4ODMyMzIzNjc0.XrARpA.RddyZHlQbjNBEzlUO4i5yAwU4h4')
