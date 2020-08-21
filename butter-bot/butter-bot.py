@@ -69,6 +69,16 @@ async def wholesome(ctx):
     await ctx.send(submission.url)
 
 
+@bot.command()
+async def dank(ctx):
+    """--Display a top dank reddit meme"""
+    memes_submissions = reddit.subreddit('dankmemes').hot()
+    post_to_pick = random.randint(1, 100)
+    for i in range(0, post_to_pick):
+        submission = next(x for x in memes_submissions if not x.stickied)
+
+    await ctx.send(submission.url)
+
     
 @bot.command()
 async def michelle(ctx):
