@@ -57,16 +57,6 @@ async def meme(ctx):
     await ctx.send(submission.url)
 
 @bot.command()
-async def wholesome(ctx):
-    """--Display a wholesome meme"""
-    wholesomememes_submissions = reddit.subreddit('wholesomememes').hot()
-    wholesome_post_to_pick = random.randint(1, 1000)
-    for i in range(0, wholesome_post_to_pick):
-        wholesome_submission = next(x for x in wholesomememes_submissions if not x.stickied)
-
-    await ctx.send(wholesome_submission.url)
-
-@bot.command()
 async def michelle(ctx):
     """--What would Michelle Say?"""
     sota = ['Oh my Gosh.', 'I\'ve got a beg of dregons.', 'Put it in the beg!', '**Strang hiccup noises**', 'I love soup.', 'Yeh, I had soup for lunch.', 'AHH!', 'Beg, behg, beag, beagh, ba-- beg.', 'I\'m from Minnesooooootah.']
