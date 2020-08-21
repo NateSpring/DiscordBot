@@ -52,7 +52,7 @@ async def purpose(message):
 async def meme(ctx):
     """--Display a top 10 reddit meme"""
     memes_submissions = reddit.subreddit('memes').hot()
-    post_to_pick = random.randint(1, 100)
+    post_to_pick = random.randint(1, 1000)
     for i in range(0, post_to_pick):
         submission = next(x for x in memes_submissions if not x.stickied)
 
