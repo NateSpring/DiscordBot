@@ -22,6 +22,8 @@ reddit = praw.Reddit(client_id='ReoMUk43GoPB9g',
                     user_agent='ninja_nate92')
 
 
+
+
 description = '''My purpose is to pass the butter'''
 bot = commands.Bot(command_prefix='!', description=description)
 
@@ -48,22 +50,13 @@ async def purpose(message):
 
 @bot.command()
 async def meme(ctx):
-    """--Display a random reddit meme"""
+    """--Display a top 10 reddit meme"""
     memes_submissions = reddit.subreddit('memes').hot()
-    post_to_pick = random.randint(1, 1000)
+    post_to_pick = random.randint(1, 100)
     for i in range(0, post_to_pick):
         submission = next(x for x in memes_submissions if not x.stickied)
 
     await ctx.send(submission.url)
-
-@bot.command()
-async def michelle(ctx):
-    """--What would Michelle Say?"""
-    sota = ['Oh my Gosh.', 'I\'ve got a beg of dregons.', 'Put it in the beg!', '**Strang hiccup noises**', 'I love soup.', 'Yeh, I had soup for lunch.', 'AHH!', 'Beg, behg, beag, beagh, ba-- beg.', 'I\'m from Minnesooooootah.']
-    await ctx.send(random.choice(sota))
-
-
-
 
 @bot.command()
 async def news(ctx):
@@ -81,8 +74,8 @@ async def news(ctx):
         text_array.append(quote)
     text_model = markovify.Text(text_array)
 
-    for i in range(3):
-        await ctx.send("News Report: {}".format(text_model.make_short_sentence(300)))
+    for i in range(1):
+        await ctx.send("Fox News Report: {}".format(text_model.make_short_sentence(280)))
 
 
 
@@ -136,7 +129,7 @@ class TwitterClient(object):
         else: 
             return 'negative'
   
-    def get_tweets(self, query, count = 100): 
+    def get_tweets(self, query, count = 10): 
         ''' 
         Main function to fetch tweets and parse them. 
         '''
@@ -194,15 +187,15 @@ async def feels(ctx, arg):
         #sendtxt("Positive tweets percentage: {} %".format(100*len(ptweets)/len(tweets))) 
           # printing first 5 positive tweets 
         # print("\n\nPositive tweets:") 
-        #for tweet in ptweets[:5]: 
-         # pos = (tweet['text']) 
+        for tweet in ptweets[:5]: 
+          pos = (tweet['text']) 
     
         # printing first 5 negative tweets 
         #print("\n\nNegative tweets:") 
-        #for tweet in ntweets[:5]: 
-          #negs = (tweet['text']) 
+        for tweet in ntweets[:5]: 
+          negs = (tweet['text']) 
         
-        await ctx.send("Analysis Topic: {} \n-----------------------------\n Positive Tweets Percentage: {} % \n Negative Tweets Percentage: {} % \n Neutral Tweets Percentage: {} % \n-----------------------------\n".format(str(queryArray), int(100*len(ptweets)/len(tweets)), int(100*len(ntweets)/len(tweets)), int(100*(len(tweets) - len(ntweets) - len(ptweets))/len(tweets))))
+        await ctx.send("Sentiment Analysis Topic: {} \n-----------------------------\n Positive Tweets Percentage: {} % \n Negative Tweets Percentage: {} % \n Neutral Tweets Percentage: {} % \n-----------------------------\n Random Positive Tweet: \n{} \n\n Random Negative Tweet: \n{}".format(str(queryArray), int(100*len(ptweets)/len(tweets)), int(100*len(ntweets)/len(tweets)), int(100*(len(tweets) - len(ntweets) - len(ptweets))/len(tweets)), pos, negs))
         
     
 
