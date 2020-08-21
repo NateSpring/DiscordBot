@@ -105,7 +105,7 @@ async def news(ctx):
     text_model = markovify.Text(text_array)
 
     for i in range(1):
-        await ctx.send("Fox News Report: {}".format(text_model.make_short_sentence(280)))
+        await ctx.send("Fox News Report: {}".format(text_model.make_sentence()))
 
 
 
