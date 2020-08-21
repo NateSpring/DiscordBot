@@ -225,7 +225,7 @@ async def feels(ctx, arg):
         for tweet in ntweets[:5]: 
           negs = (tweet['text']) 
         
-        await ctx.send("Sentiment Analysis Topic: {} \n-----------------------------\n Positive Tweets Percentage: {} % \n Negative Tweets Percentage: {} % \n Neutral Tweets Percentage: {} % \n-----------------------------\n Random Positive Tweet: \n{} \n\n Random Negative Tweet: \n{}".format(str(queryArray), int(100*len(ptweets)/len(tweets)), int(100*len(ntweets)/len(tweets)), int(100*(len(tweets) - len(ntweets) - len(ptweets))/len(tweets)), pos, negs))
+        await ctx.send("Sentiment Analysis Topic: {} \n-----------------------------\n Positive Tweets Percentage: {} % \n Negative Tweets Percentage: {} % \n Neutral Tweets Percentage: {} % \n-----------------------------\n".format(str(queryArray), int(100*len(ptweets)/len(tweets)), int(100*len(ntweets)/len(tweets)), int(100*(len(tweets) - len(ntweets) - len(ptweets))/len(tweets))))
         
     
 
