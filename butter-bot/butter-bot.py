@@ -61,10 +61,10 @@ async def meme(ctx):
 @bot.command()
 async def wholesome(ctx):
     """--Display a wholesome meme"""
-    memes_submissions = reddit.subreddit('wholesomememes').hot()
-    post_to_pick = random.randint(1, 1000)
-    for i in range(0, post_to_pick):
-        submission = next(x for x in memes_submissions if not x.stickied)
+    wholesomememes_submissions = reddit.subreddit('wholesomememes').hot()
+    wholesome_post_to_pick = random.randint(1, 1000)
+    for i in range(0, wholesome_post_to_pick):
+        submission = next(x for x in wholesomememes_submissions if not x.stickied)
 
     await ctx.send(submission.url)
 
@@ -94,7 +94,7 @@ async def news(ctx):
     text_model = markovify.Text(text_array)
 
     for i in range(3):
-        await ctx.send("Top 3 News Reports: {}".format(text_model.make_short_sentence(140)))
+        await ctx.send("News Report: {}".format(text_model.make_short_sentence(300)))
 
 
 
