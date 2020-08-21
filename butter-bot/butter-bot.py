@@ -64,9 +64,9 @@ async def wholesome(ctx):
     wholesomememes_submissions = reddit.subreddit('wholesomememes').hot()
     wholesome_post_to_pick = random.randint(1, 1000)
     for i in range(0, wholesome_post_to_pick):
-        submission = next(x for x in wholesomememes_submissions if not x.stickied)
+        wholesome_submission = next(x for x in wholesomememes_submissions if not x.stickied)
 
-    await ctx.send(submission.url)
+    await ctx.send(wholesome_submission.url)
 
 @bot.command()
 async def michelle(ctx):
