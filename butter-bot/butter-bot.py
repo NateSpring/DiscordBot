@@ -22,8 +22,6 @@ reddit = praw.Reddit(client_id='ReoMUk43GoPB9g',
                     user_agent='ninja_nate92')
 
 
-
-
 description = '''My purpose is to pass the butter'''
 bot = commands.Bot(command_prefix='!', description=description)
 
