@@ -16,13 +16,6 @@ import re
 import markovify
 
 
-TOKEN = 'NzA2ODUyNDQ4ODMyMzIzNjc0.XrARpA.YP7Whs19AKsbiRzvca_8-rzjOdE'
-reddit = praw.Reddit(client_id='ReoMUk43GoPB9g',
-                    client_secret='PCybyCu_4HffhqLyfOAUe1QKSbU',
-                    user_agent='ninja_nate92')
-
-
-
 
 description = '''My purpose is to pass the butter'''
 bot = commands.Bot(command_prefix='!', description=description)
@@ -78,15 +71,6 @@ async def dank(ctx):
         submission = next(x for x in memes_submissions if not x.stickied)
 
     await ctx.send(submission.url)
-
-    
-@bot.command()
-async def michelle(ctx):
-    """--What would Michelle Say?"""
-    sota = ['Oh my Gosh.', 'I\'ve got a beg of dregons.', 'Put it in the beg!', '**Strang hiccup noises**', 'I love soup.', 'Yeh, I had soup for lunch.', 'AHH!', 'Beg, behg, beag, beagh, ba-- beg.', 'I\'m from Minnesooooootah.']
-    await ctx.send(random.choice(sota))
-
-
 
 @bot.command()
 async def news(ctx):
