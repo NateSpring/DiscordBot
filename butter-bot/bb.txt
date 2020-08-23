@@ -20,3 +20,12 @@ async def purpose(message):
 
 
 
+
+    
+@bot.command()
+async def michelle(ctx):
+    """--What would Michelle Say?"""
+    sota = ['Oh my Gosh.', 'I\'ve got a beg of dregons.', 'Put it in the beg!', '**Strang hiccup noises**', 'I love soup.', 'Yeh, I had soup for lunch.', 'AHH!', 'Beg, behg, beag, beagh, ba-- beg.', 'I\'m from Minnesooooootah.']
+    await ctx.send(random.choice(sota))
+
+
